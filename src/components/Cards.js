@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import "./cards.css";
 
 function Cards(props) {
-  const { data } = props;
+  let { data } = props;
   const cardsArray = data.map(element => (
     <div className="card" id={element._id} key={element._id}>
-      <div className={`text ${element._id}`}>{element.title}</div>
+      <div className={"text"}>{element.title}</div>
       <i className="fas fa-trash-alt" />
     </div>
   ));

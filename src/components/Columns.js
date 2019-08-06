@@ -3,17 +3,16 @@ import Cards from "../components/Cards.js";
 import "./columns.css";
 
 function Columns(props) {
-  let { dataColumn } = props;
-  let dataColumns = dataColumn.columns;
-  const dataArrayReact = dataColumns.map(element => (
+  let { dataColumn, dataCard } = props;
+  const arrColumnsJSX = dataColumn.map(element => (
     <div className="columns" id={element.id} key={element.id}>
       {element.title}
       <i className="fa fa-plus-circle" />
-      <Cards data={props.dataCard.data} />
+      <Cards data={dataCard[element.id]} />
     </div>
   ));
 
-  return <div id="desk">{dataArrayReact}</div>;
+  return <div id="desk">{arrColumnsJSX}</div>;
 }
 
 export default Columns;

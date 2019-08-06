@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import CardContainer from "./container/card.js";
+import ColumnContainer from "./container/column.js";
 
 function App() {
   return (
     <div>
-      <CardContainer />
+      <ColumnContainer />
     </div>
   );
 }
