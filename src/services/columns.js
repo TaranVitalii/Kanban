@@ -1,8 +1,4 @@
 import axios from "axios";
 
-async function getColumns() {
-  let columnResponse = await axios.get(`/api/column`);
-  return columnResponse;
-}
-
+const getColumns = async () => await axios.get(`/api/column`);
 export default getColumns;

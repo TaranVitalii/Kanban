@@ -1,8 +1,4 @@
 import axios from "axios";
 
-async function getCards() {
-  let cardResponse = await axios.get(`/api/card`);
-  return cardResponse;
-}
-
+const getCards = async () => await axios.get(`/api/card`);
 export default getCards;

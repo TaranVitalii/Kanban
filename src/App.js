@@ -1,6 +1,5 @@
 import React from "react";
-import "./App.css";
-import ColumnContainer from "./container/column.js";
+import ColumnContainer from "./container/Table";
 
 function App() {
   return (

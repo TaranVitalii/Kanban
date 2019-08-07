@@ -1,4 +1,4 @@
-#desk {
+.desk {
   display: flex;
   position: relative;
 }
