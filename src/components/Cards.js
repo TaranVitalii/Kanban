@@ -11,7 +11,7 @@ const Cards = props => {
         <i className="fas fa-trash-alt" />
       </div>
     ));
-    return <div className="cards container">{allCardsForColumn}</div>;
+    return allCardsForColumn;
   } else if (columnId === 1) {
     const allCardsForColumn = cardsInProgress.map(card => (
       <div className="card" id={card._id} key={card._id}>
@@ -19,7 +19,7 @@ const Cards = props => {
         <i className="fas fa-trash-alt" />
       </div>
     ));
-    return <div className="cards container">{allCardsForColumn}</div>;
+    return allCardsForColumn;
   } else if (columnId === 2) {
     const allCardsForColumn = cardsDone.map(card => (
       <div className="card" id={card._id} key={card._id}>
@@ -27,7 +27,7 @@ const Cards = props => {
         <i className="fas fa-trash-alt" />
       </div>
     ));
-    return <div className="cards container">{allCardsForColumn}</div>;
+    return allCardsForColumn;
   }
 };
 export default Cards;

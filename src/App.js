@@ -1,10 +1,10 @@
 import React from "react";
-import ColumnContainer from "./container/Table";
+import Store from "./store";
 
-function App() {
+function App({ children }) {
   return (
     <div>
-      <ColumnContainer />
+      <Store>{children}</Store>
     </div>
   );
 }
