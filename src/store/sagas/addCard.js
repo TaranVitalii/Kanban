@@ -1,15 +1,15 @@
-import { takeLetest, call } from "redux-saga/effects";
+import { takeLatest, call } from "redux-saga/effects";
+import { addCard } from "../../services/cards";
 import { ADD_CARD } from "../constants";
 import makeAsyncRequest from "./makeAsyncRequest";
 
-function* addCard() {
-  console.log("add");
-  const action = () => call(addCard);
+function* addCardSaga(mainAction) {
+  const action = () => call(addCard, mainAction.payload);
   yield makeAsyncRequest(action, ADD_CARD);
 }
 
 function* watchAddCard() {
-  yield takeLetest(ADD_CARD, addCard);
+  yield takeLatest(ADD_CARD, addCardSaga);
 }
 
 export default [watchAddCard];

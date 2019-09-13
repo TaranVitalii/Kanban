@@ -3,7 +3,6 @@ import { DELETE_CARD } from "../constants";
 import makeAsyncRequest from "./makeAsyncRequest";
 
 function* deleteCard() {
-  console.log("delete");
   const action = () => call(deleteCard);
   yield makeAsyncRequest(action, DELETE_CARD);
 }

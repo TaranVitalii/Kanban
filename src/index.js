@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import Table from "./components/Table";
 import SignIn from "./components/Auth/";
 import Registry from "./components/Registry";
 import App from "./App";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import "./index.css";
 
 ReactDOM.render(
   <BrowserRouter>

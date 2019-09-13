@@ -4,9 +4,10 @@ import { successAction, failureAction } from "../types";
 export default function*(action, actionType, options = {}) {
   try {
     const result = yield action();
+    console.log(result.data);
     yield put({
       type: successAction(actionType),
-      payload: result,
+      payload: result.data,
       ...options
     });
   } catch (error) {

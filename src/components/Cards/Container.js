@@ -1,26 +1,23 @@
 import React from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import {
-  deleteCardAxios,
-  updateCardTitle
-} from "../../store/actions/columnsAndCards";
+import { deleteCard, updateCardTitle } from "../../store/actions/cards";
 import { loadState } from "../../utils/localStorage";
 
 const Container = Component =>
   class Container extends React.Component {
     removeCardHandler = e => {
-      const cardId = e.target.closest(".card").getAttribute("id");
+      const cardId = this.props.card._id;
       const token = loadState("token");
       const value = { cardId, token };
-      this.props.deleteCardAxios(value);
+      this.props.deleteCard(value);
     };
     updateCardTitle = e => {
       if (e.keyCode === 13) {
         e.preventDefault();
         const newText = e.target.value;
         if (newText && newText.length) {
-          let cardId = e.target.closest(".card").id;
+          let cardId = this.props.card._id;
           const token = loadState("token");
           let data = { cardId, newText, token };
           this.props.updateCardTitle(data);
@@ -33,7 +30,7 @@ const Container = Component =>
     onBlurHandler = e => {
       let newText = e.target.value;
       if (newText && newText.length) {
-        let cardId = e.target.closest(".card").id;
+        let cardId = this.props.card._id;
         const token = loadState("token");
 
         let data = { cardId, newText, token };
@@ -44,7 +41,7 @@ const Container = Component =>
     };
 
     dragStart = e => {
-      let cardId = e.target.closest(".card").id;
+      let cardId = this.props.card._id;
       let columnId = e.target.closest(".columns").id;
       let objData = JSON.stringify({
         cardId: cardId,
@@ -70,7 +67,7 @@ const Container = Component =>
 export default compose(
   connect(
     null,
-    { deleteCardAxios, updateCardTitle }
+    { deleteCard, updateCardTitle }
   ),
   Container
 );

@@ -2,12 +2,9 @@ import React from "react";
 import Cards from "../Cards/";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { getCards } from "../../store/selectors/cards";
-import {
-  getCardsAxios,
-  updateCardColumn,
-  postAddCardsAxios
-} from "../../store/actions/columnsAndCards";
+import { getCardsFromState } from "../../store/selectors/cards";
+import { getCards, addCard } from "../../store/actions/cards";
+import { updateCardColumn } from "../../store/actions/columns";
 import { loadState } from "../../utils/localStorage";
 import { splitCardsOnState } from "../../utils/splitCards";
 
@@ -15,11 +12,11 @@ const Container = Component =>
   class Container extends React.Component {
     componentDidMount() {
       const token = loadState("token");
-      this.props.getCardsAxios(token);
+      this.props.getCards(token);
     }
     addCardHandler = e => {
       const token = loadState("token");
-      this.props.postAddCardsAxios(token);
+      this.props.addCard(token);
     };
     dragOver = e => {
       e.preventDefault();
@@ -76,13 +73,13 @@ const Container = Component =>
   };
 
 function mapStateToProps(state) {
-  return { cards: splitCardsOnState(getCards(state)) };
+  return { cards: splitCardsOnState(getCardsFromState(state)) };
 }
 
 export default compose(
   connect(
     mapStateToProps,
-    { getCardsAxios, postAddCardsAxios, updateCardColumn }
+    { getCards, addCard, updateCardColumn }
   ),
   Container
 );

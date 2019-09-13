@@ -1,11 +1,11 @@
 import { compose, applyMiddleware } from "redux";
-
-import columns from "./columns";
-import cards from "./cards";
-import addCard from "./addCard";
-import deleteCard from "./deleteCard";
-import updateCardTitle from "./updateCardTitle";
-import updateCardColumn from "./updateCardColumn";
+import sagas, { run as runSagas } from "../sagas";
+// import columns from "./columns";
+// import cards from "./cards";
+// import addCard from "./addCard";
+// import deleteCard from "./deleteCard";
+// import updateCardTitle from "./updateCardTitle";
+// import updateCardColumn from "./updateCardColumn";
 
 const g = global || window;
 const composeEnhancers =
@@ -13,13 +13,8 @@ const composeEnhancers =
     ? g.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
     : compose;
 
-const middleware = [
-  columns,
-  cards,
-  addCard,
-  deleteCard,
-  updateCardTitle,
-  updateCardColumn
-];
+const middleware = [sagas];
 
 export default composeEnhancers(applyMiddleware(...middleware));
+
+export const run = () => runSagas();

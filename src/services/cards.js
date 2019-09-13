@@ -21,7 +21,6 @@ export const deleteCard = async ({ cardId, token }) => {
 };
 
 export const updateCard = async (cardId, newText, token) => {
-  console.log(token);
   const editorNode = { title: newText };
   return await axios.patch(`/api/card/${cardId}`, editorNode, {
     headers: { Authorization: `Bearer ${token}` }
